@@ -5,10 +5,10 @@ const app = express();
 const port = 3000;
 
 app.use(express.static('public'));
-app.use('/images', express.static('/Users/dietrichaumann/Downloads/Wienerschmarrn'));
+app.use('/images', express.static(path.join(__dirname, 'images 4')));
 
 app.get('/image-filenames', (req, res) => {
-  const directoryPath = '/Users/dietrichaumann/Downloads/Wienerschmarrn';
+  const directoryPath = path.join(__dirname, 'images 4');
 
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
