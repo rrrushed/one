@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000;
 app.use(express.static('public'));
 
 app.get('/image-filenames', (req, res) => {
-  const directoryPath = path.join(__dirname, 'public', 'images 4');
+  const directoryPath = path.join(__dirname, 'images 4');
 
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
@@ -16,7 +16,7 @@ app.get('/image-filenames', (req, res) => {
     }
 
     const encodedFiles = files
-      .filter(filename => !filename.startsWith('.'))
+      .filter(filename => !filename.startsWith('.') && filename !== 'DS_Store')
       .map(filename => encodeURIComponent(filename));
     res.json(encodedFiles);
   });
