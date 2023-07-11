@@ -15,6 +15,8 @@ app.get('/image-filenames', (req, res) => {
       return res.sendStatus(500);
     }
 
+    console.log(files); // Log the filenames
+
     const encodedFiles = files
       .filter(filename => !filename.startsWith('.') && filename !== 'DS_Store')
       .map(filename => encodeURIComponent(filename));
