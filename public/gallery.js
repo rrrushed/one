@@ -10,7 +10,7 @@ function updateImage() {
   const currentImage = images.shift(); // Take the first image from the list
   images.push(currentImage); // And add it back to the end of the list
 
-  imageElement.src = '/images 4/' + currentImage;
+  imageElement.src = '/images/' + currentImage;
 }
 
 fetch('/image-filenames')
