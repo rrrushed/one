@@ -2,13 +2,12 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
-app.use('/images', express.static(path.join(__dirname, 'images 4')));
 
 app.get('/image-filenames', (req, res) => {
-  const directoryPath = path.join(__dirname, 'images 4');
+  const directoryPath = path.join(__dirname, 'public', 'images 4');
 
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
@@ -16,9 +15,15 @@ app.get('/image-filenames', (req, res) => {
       return res.sendStatus(500);
     }
 
-    const encodedFiles = files.map(filename => encodeURIComponent(filename));
+    const encodedFiles = files
+      .filter(filename => !filename.startsWith('.'))
+      .map(filename => encodeURIComponent(filename));
     res.json(encodedFiles);
   });
+});
+
+app.get('/favicon.ico', (req, res) => {
+  res.sendStatus(204);
 });
 
 app.listen(port, () => {
