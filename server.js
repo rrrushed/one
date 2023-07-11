@@ -10,6 +10,8 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.get('/image-filenames', (req, res) => {
   const directoryPath = path.join(__dirname, 'images');
 
+  console.log(directoryPath); // Add this line for debugging
+  
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
       console.log('Unable to scan directory: ' + err);
