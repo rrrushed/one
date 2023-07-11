@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
+app.use('/images', express.static(path.join(__dirname, 'images 4')));
 
 app.get('/image-filenames', (req, res) => {
   const directoryPath = path.join(__dirname, 'images 4');
