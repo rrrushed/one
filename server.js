@@ -10,20 +10,18 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 app.get('/image-filenames', (req, res) => {
   const directoryPath = path.join(__dirname, 'images');
 
-  console.log(directoryPath); // Add this line for debugging
-  
+  console.log('Directory path:', directoryPath);
+
   fs.readdir(directoryPath, function (err, files) {
     if (err) {
       console.log('Unable to scan directory: ' + err);
       return res.sendStatus(500);
     }
 
-    console.log(files); // Log the filenames
-
     const encodedFiles = files
       .filter(filename => !filename.startsWith('.') && filename !== 'DS_Store')
       .map(filename => encodeURIComponent(filename));
-    res.text(encodedFiles.join('\n')); // Send response as plain text
+    res.json(encodedFiles);
   });
 });
 
