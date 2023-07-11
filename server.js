@@ -23,7 +23,7 @@ app.get('/image-filenames', (req, res) => {
     const encodedFiles = files
       .filter(filename => !filename.startsWith('.') && filename !== 'DS_Store')
       .map(filename => encodeURIComponent(filename));
-    res.json(encodedFiles);
+    res.text(encodedFiles.join('\n')); // Send response as plain text
   });
 });
 
