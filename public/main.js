@@ -1,5 +1,5 @@
-document.body.onkeyup = function(e) {
-    if (e.keyCode == 32) {
-        window.location.href = "/gallery.html";
+document.body.onkeyup = (e) => {
+    if (e.code === "Space") {
+        window.location.href = "gallery.html";
     }
 };
