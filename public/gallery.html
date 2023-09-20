@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Rrrush</title>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -107,7 +107,7 @@
             }
           }
 
-          fetch('/image-filenames')
+          fetch('image-filenames.json')
             .then(response => response.json())
             .then(filenames => {
               // Shuffle the filenames to display images in random order
@@ -160,6 +160,5 @@
         <p>&lt;....Decrease Speed</p>
         <p>&gt;....Increase Speed</p>
     </div>
-    <script src="/gallery.js"></script>
 </body>
 </html>
